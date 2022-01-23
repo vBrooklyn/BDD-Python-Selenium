@@ -1,0 +1,6 @@
+pytest==6.2.5
+selenium==4.1.0
+allure-pytest==2.9.45
+pytest_check==1.0.4
+pytest_bdd==5.0.0
+pytest-xdist==2.5.0
