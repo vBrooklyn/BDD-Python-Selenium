@@ -10,7 +10,7 @@ from typing import List
 class SeleniumBase:
     def __init__(self, driver):
         self.driver = driver
-        self.__wait = WebDriverWait(driver, 15, 0.3, ignored_exceptions=StaleElementReferenceException)
+        self.__wait = WebDriverWait(driver, 10, 0.3, ignored_exceptions=StaleElementReferenceException)
 
     @allure.step('Return a find by locator strategy')
     def __get_selenium_by(self, find_by: str) -> dict:

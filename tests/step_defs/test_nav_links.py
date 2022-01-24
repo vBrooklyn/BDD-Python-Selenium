@@ -1,3 +1,4 @@
+import allure
 import pytest
 from pytest_bdd import scenario, given, then, when, parsers
 from pytest_check import check
@@ -32,6 +33,7 @@ def webelement() -> list:
     return []
 
 
+@allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.usefixtures('setup')
 @scenario('../features/macys_homepage_nav_links.feature',
           'Navigation link contains subcategories with items')
@@ -39,7 +41,7 @@ def test_navigation_link_contains_subcategories_with_items():
     """A user opens subcategories through navigation links"""
     pass
 
-
+@allure.severity(allure.severity_level.MINOR)
 @pytest.mark.usefixtures('setup')
 @scenario('../features/macys_homepage_nav_links.feature',
           'This test will fail')
@@ -102,4 +104,5 @@ def the_user_opens_nav_link(category_page, category_name, webelement):
 def number_of_subcategories_greater_than_expected(category_page, expected_number_of_subcategories, webelement):
     actual_number_of_subcategories = category_page.get_subcategories(webelement[-1])
     with check:
-        assert expected_number_of_subcategories < len(actual_number_of_subcategories), f'Actual number of subcategories should be greater than {expected_number_of_subcategories}'
+        assert expected_number_of_subcategories < len(
+            actual_number_of_subcategories), f'Actual number of subcategories should be greater than {expected_number_of_subcategories}'
